@@ -38,4 +38,7 @@ Rails.application.routes.draw do
   get "/skills/:id" => "skills#show"
   patch "/skills/:id" => "skills#update"
   delete "/skills/:id" => "skills#destroy"
+
+  post "/users" => "users#create"
+  post "/sessions" => "sessions#create"
 end
