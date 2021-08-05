@@ -24,12 +24,13 @@ class EducationController < ApplicationController
 
   def update
     education = Education.find_by(id: params[:id])
-    education.student_id = params[:student_id] || user.student_id
-    education.start_date = params[:start_date] || user.start_date
-    education.end_date = params[:end_date] || user.end_date
-    education.degree = params[:degree] || user.degree
-    education.university_name = params[:university_name] || user.university_name
-    education.details = params[:details] || user.details
+    education.student_id = params[:student_id] || education.student_id
+    education.start_date = params[:start_date] || education.start_date
+    education.end_date = params[:end_date] || education.end_date
+    education.degree = params[:degree] || education.degree
+    education.university_name = params[:university_name] || education.university_name
+    education.details = params[:details] || education.details
+
     education.save
     render json: education.as_json
   end
