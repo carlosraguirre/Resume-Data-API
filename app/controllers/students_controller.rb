@@ -30,20 +30,20 @@ class StudentsController < ApplicationController
   def update
     student = Student.find_by(id: params[:id])
 
-    student.first_name params[:name] || student.first_name
-    student.last_name params[:last_name] || student.last_name
-    student.email params[:email] || student.email
-    student.password_digest params[:password_digest] || student.password_digest
-    student.phone_number params[:phone_number] || student.phone_number
-    student.short_bio params[:linkedin_url] || student.short_bio
-    student.linkedin_url params[:linkedin_url] || student.linkedin_url
-    student.twitter_handle params[:twitter_handle] || student.twitter_handle
-    student.website_url params[:website_url] || student.website_url
-    student.online_resume_url params[:online_resume_url] || student.online_resume_url
-    student.github_url params[:github_url] || student.github_url
-    student.photo params[:photo] || student.photo
+    student.first_name = params[:first_name] || student.first_name
+    student.last_name = params[:last_name] || student.last_name
+    student.email = params[:email] || student.email
+    student.password_digest = params[:password_digest] || student.password_digest
+    student.phone_number = params[:phone_number] || student.phone_number
+    student.short_bio = params[:linkedin_url] || student.short_bio
+    student.linkedin_url = params[:linkedin_url] || student.linkedin_url
+    student.twitter_handle = params[:twitter_handle] || student.twitter_handle
+    student.website_url = params[:website_url] || student.website_url
+    student.online_resume_url = params[:online_resume_url] || student.online_resume_url
+    student.github_url = params[:github_url] || student.github_url
+    student.photo = params[:photo] || student.photo
 
-    if student.save
+    if student.save!
       render json: student
     else
       render json: {error: student.errors.full_messages}, status: :unprocessable_entity
@@ -53,7 +53,12 @@ class StudentsController < ApplicationController
   def destroy
     student = Student.find_by(id: params[:id])
     student.destroy
-    render json: {"student has been removed from your cart"}
+    render json: {message: 'student has been removed from your database'}
+  end
+
+  def show
+    student = Student.find_by(id: params[:id])
+    render json: {student: student, capstone: student.capstones, education: student.educations, experience: student.experiences, skills: student.skills}
   end
 
 end
