@@ -20,4 +20,22 @@ Rails.application.routes.draw do
   patch "/education/:id" => "education#update"
   #delete existing group
   delete "/education/:id" => "education#destroy"
+
+  get '/students' => 'students#index'
+  post '/students' => 'students#create'
+  patch '/students/:id' => 'students#update'
+  delete '/students/:id' => 'students#destroy'
+  get '/students/:id' => 'students#show'
+  
+  get "/capstone" => "capstone#index"
+  post "/capstone" => "capstone#create"
+  get "/capstone/:id" => "capstone#show"
+  patch "/capstone/:id" => "capstone#update"
+  delete "/capstone/:id" => "capstone#destroy"
+
+  get "/skills" => "skills#index"
+  post "/skills" => "skills#create"
+  get "/skills/:id" => "skills#show"
+  patch "/skills/:id" => "skills#update"
+  delete "/skills/:id" => "skills#destroy"
 end
