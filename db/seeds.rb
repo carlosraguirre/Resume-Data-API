@@ -12,20 +12,43 @@ Student.create!([
   {first_name: "Lukas", last_name: "Kim", email: "lu@kas.com", password_digest: "password", phone_number: "2024445555", short_bio: "Im in Korea now", linkedin_url: "https://www.linkedin.com/in/taegon-kim/", twitter_handle: "https://twitter.com/moviedetail", website_url: "https://bicyclecards.com/how-to-play/basics-of-poker/", online_resume_url: "https://www.themuse.com/advice/43-resume-tips-that-will-help-you-get-hired", github_url: "https://github.com/taegonkim98", photo: "https://avatars.dicebear.com/api/male/taegon.svg"}
 ])
 
+student_ids = []
+students = Student.all
+students.each do |student|
+  student_ids << student.id
+end
+
+Skill.create!([
+  {student_id: student_ids.sample, skill_name: "Rails" },
+  {student_id: student_ids.sample, skill_name: "Git" },
+  {student_id: student_ids.sample, skill_name: "Ruby" },
+  {student_id: student_ids.sample, skill_name: "Python" },
+  {student_id: student_ids.sample, skill_name: "Kickin ass" },
+  {student_id: student_ids.sample, skill_name: "Excel" },
+  {student_id: student_ids.sample, skill_name: "Biking" },
+  {student_id: student_ids.sample, skill_name: "Gaming" }
+])
+
+Capstone.create!([
+  {student_id: student_ids.sample, name: "Capstone1", description: "Capstone1 description", url: "Capstone1 url" , screenshot: "Capstone1 screenshot" },
+  {student_id: student_ids.sample, name: "Capstone2", description: "Capstone2 description", url: "Capstone2 url" , screenshot: "Capstone2 screenshot" },
+  {student_id: student_ids.sample, name: "Capstone3", description: "Capstone3 description", url: "Capstone3 url" , screenshot: "Capstone3 screenshot" },
+  {student_id: student_ids.sample, name: "Capstone4", description: "Capstone4 description", url: "Capstone4 url" , screenshot: "Capstone4 screenshot" },
+  {student_id: student_ids.sample, name: "Capstone5", description: "Capstone5 description", url: "Capstone5 url" , screenshot: "Capstone5 screenshot" },
+  {student_id: student_ids.sample, name: "Capstone6", description: "Capstone6 description", url: "Capstone6 url" , screenshot: "Capstone6 screenshot" }
+])
+
 Experience.create([
-  {student_id: student_id.sample, start_date: "06 Feb 2021", end_date: "09 sep 2021", job_title: "Software engineer", company_name: "Ebay", details: "backend software developer"},
-  {student_id: student_id.sample, start_date: "01 Jan 2020", end_date: "29 Dec 2021", job_title: "Full stack software developer", company_name: "Google", details: "full Stack developer for google, specializing in API and ruby framework"},
-  {student_id: student_id.sample, start_date: "05 Mar 2018", end_date: "22 Nov 2020", job_title: "Full stack software developer", company_name: "Groupon", details: "full Stack developer groupon, specializing in APIs, Vue.js and ruby framework"},
-  {student_id: student_id.sample, start_date: "04 Apr 2016", end_date: "19 Dec 2018", job_title: "Web developer", company_name: "Envision", details: "web developer for a Company that creates video games websites"},
-  {student_id: student_id.sample, start_date: "04 Jul 2013", end_date: "20 Jan 2019", job_title: "Full stack software developer", company_name: "Bestbuy", details: "full stack dev for ruby and Vue.ss frameworks remotely"}
+  {student_id: student_ids.sample, start_date: "06 Feb 2021", end_date: "09 sep 2021", job_title: "Software engineer", company_name: "Ebay", details: "backend software developer"},
+  {student_id: student_ids.sample, start_date: "01 Jan 2020", end_date: "29 Dec 2021", job_title: "Full stack software developer", company_name: "Google", details: "full Stack developer for google, specializing in API and ruby framework"},
+  {student_id: student_ids.sample, start_date: "05 Mar 2018", end_date: "22 Nov 2020", job_title: "Full stack software developer", company_name: "Groupon", details: "full Stack developer groupon, specializing in APIs, Vue.js and ruby framework"},
+  {student_id: student_ids.sample, start_date: "04 Apr 2016", end_date: "19 Dec 2018", job_title: "Web developer", company_name: "Envision", details: "web developer for a Company that creates video games websites"},
+  {student_id: student_ids.sample, start_date: "04 Jul 2013", end_date: "20 Jan 2019", job_title: "Full stack software developer", company_name: "Bestbuy", details: "full stack dev for ruby and Vue.ss frameworks remotely"}
   ])
 
 
-
-
-
 Education.create([
-  { student_id: 1, start_date: "3, Sept 2000", end_date: "31, May 2020", degree: "Doctorate", university_name: "Stanford University", details: "Received doctorate from Stanford University in biology" },
-  { student_id: 1234, start_date: "11, May 2016", end_date: "31, May 2020", degree: "Masters", university_name: "Harvard University", details: "Received masters from Harvard in computer science" },
-  { student_id: 345, start_date: "3, Sept 2010", end_date: "31, May 2014", degree: "Bachelors", university_name: "Oxford University", details: "Received bachelors degree from Oxford University in music" },
+  { student_id: student_ids.sample, start_date: "3, Sept 2000", end_date: "31, May 2020", degree: "Doctorate", university_name: "Stanford University", details: "Received doctorate from Stanford University in biology" },
+  { student_id: student_ids.sample, start_date: "11, May 2016", end_date: "31, May 2020", degree: "Masters", university_name: "Harvard University", details: "Received masters from Harvard in computer science" },
+  { student_id: student_ids.sample, start_date: "3, Sept 2010", end_date: "31, May 2014", degree: "Bachelors", university_name: "Oxford University", details: "Received bachelors degree from Oxford University in music" },
 ])
