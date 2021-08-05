@@ -40,4 +40,5 @@ Rails.application.routes.draw do
   delete "/skills/:id" => "skills#destroy"
 
   post "/users" => "users#create"
+  post "/sessions" => "sessions#create"
 end
