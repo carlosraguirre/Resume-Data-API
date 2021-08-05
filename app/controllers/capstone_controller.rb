@@ -1,11 +1,46 @@
 class CapstoneController < ApplicationController
   def index
-    render json: Capstone.all
+    render json: Capstone.all.as_json
   end
 
   def create
-    capstone = Capstone.new (
-      student_id
+    capstone = Capstone.new(
+      student_id: params[:student_id],
+      name: params[:name],
+      description: params[:description],
+      url: params[:url],
+      screenshot: params[:screenshot]
     )
+    if capstone.save
+      render json: {message: "Capstone created"}, status: :created
+      
+    else
+      render json: { errors: capstone.errors.full_messages }, status: :bad_request
+    end
+  end
+
+  def show
+    capstone = Capstone.find_by(id: params[:id])
+    render json: capstone.as_json
+  end
+
+  def update
+    capstone = Capstone.find_by(id: params[:id])
+    
+    capstone.student_id = params[:student_id] || capstone.student_id
+    capstone.name = params[:name] || capstone.name
+    capstone.description = params[:description] || capstone.description
+    capstone.url = params[:url] || capstone.url
+    capstone.screenshot = params[:screenshot] || capstone.screenshot
+
+    render json: capstone.as_json
+  end
+
+  def destroy
+    capstone = Capstone.find_by(id: params[:id])
+
+    if capstone.delete
+      render json: {message: "Capstone was deleted"}
+    end
   end
 end
