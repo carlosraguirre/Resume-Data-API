@@ -21,6 +21,12 @@ Rails.application.routes.draw do
   #delete existing group
   delete "/education/:id" => "education#destroy"
 
+  get '/students' => 'students#index'
+  post '/students' => 'students#create'
+  patch '/students/:id' => 'students#update'
+  delete '/students/:id' => 'students#destroy'
+  get '/students/:id' => 'students#show'
+  
   get "/capstone" => "capstone#index"
   post "/capstone" => "capstone#create"
   get "/capstone/:id" => "capstone#show"
