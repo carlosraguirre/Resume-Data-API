@@ -30,6 +30,7 @@ class EducationController < ApplicationController
     education.degree = params[:degree] || education.degree
     education.university_name = params[:university_name] || education.university_name
     education.details = params[:details] || education.details
+
     education.save
     render json: education.as_json
   end
