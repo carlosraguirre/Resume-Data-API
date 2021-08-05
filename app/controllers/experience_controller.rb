@@ -1,7 +1,7 @@
 class ExperienceController < ApplicationController
   def index
     experience = Experience.all
-  render json: experience.as_json
+    render json: experience.as_json
   end
 
   def create
@@ -18,14 +18,12 @@ class ExperienceController < ApplicationController
   end
 
   def show
-    experience = Experience.find_by(id:
-    params[:id])
+    experience = Experience.find_by(id: params[:id])
     render json: experience.as_json
-    end
+  end
 
   def update
-    experience = Experience.find_by(id:
-    params[:id])
+    experience = Experience.find_by(id: params[:id])
     experience.student_id = params[:student_id] || user.student_id
     experience.start_date = params[:start_date] || user.start_date
     experience.end_date = params[:end_date] || user.end_date
@@ -34,11 +32,11 @@ class ExperienceController < ApplicationController
     experience.details = params[:details] || user.details
     experience.save
     render json: experience.as_json
-    end 
+  end
 
   def destroy
     experience = Experience.find_by(id: params[:id])
     experience.destroy
-    render json: {message: "Experience successfully deleted"}
+    render json: { message: "Experience successfully deleted" }
   end
 end
